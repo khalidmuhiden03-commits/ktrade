@@ -1,1 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>$kTRADE — AI Trading Chart Analyzer</title>
+  <meta name="description" content="$kTRADE is an AI-powered trading chart analysis tool for educational chart analysis.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #07111f;
+      color: white;
+      line-height: 1.6;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 7%;
+      background: #091522;
+      border-bottom: 1px solid #1d3045;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #36e0a0;
+    }
+
+    nav a {
+      color: #dbe7f3;
+      text-decoration: none;
+      margin-left: 25px;
+    }
+
+    nav a:hover {
+      color: #36e0a0;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 80px;
+      background: radial-gradient(circle at top, #12304a, #07111f 65%);
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 8vw, 80px);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #36e0a0;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #b7c6d8;
+      font-size: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      border-radius: 10px;
+      background: #36e0a0;
+      color: #06121d;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 80px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 45px;
+    }
+
+    .upload-box {
+      max-width: 800px;
+      margin: auto;
+      padding: 45px;
+      border: 2px dashed #36e0a0;
+      border-radius: 20px;
+      background: #0c1b2b;
+      text-align: center;
+    }
+
+    .upload-box h2 {
+      margin-bottom: 15px;
+    }
+
+    .upload-box p {
+      color: #9eb0c4;
+      margin-bottom: 25px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .upload-label {
+      display: inline-block;
+      padding: 14px 25px;
+      background: #36e0a0;
+      color: #06121d;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #preview {
+      max-width: 100%;
+      max-height: 450px;
+      margin-top: 30px;
+      border-radius: 12px;
+      display: none;
+    }
+
+    #message {
+      margin-top: 20px;
+      color: #36e0a0;
+      font-weight: bold;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: #0c1b2b;
+      border: 1px solid #1c334b;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #36e0a0;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #aebdcd;
+    }
+
+    .sponsors {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .price-card {
+      background: #0c1b2b;
+      border: 1px solid #28445e;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .price-card.featured {
+      border: 2px solid #36e0a0;
+    }
+
+    .price {
+      font-size: 35px;
+      font-weight: bold;
+      color: #36e0a0;
+      margin: 15px 0;
+    }
+
+    .contact {
+      text-align: center;
+      background: #091522;
+    }
+
+    .contact p {
+      color: #b7c6d8;
+      margin: 10px 0;
+    }
+
+    .contact a {
+      color: #36e0a0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #7f91a5;
+      background: #050d16;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0 7px;
+      }
+
+      section {
+        padding: 60px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">$kTRADE</div>
+
+    <div>
+      <a href="#analyze">Analyze</a>
+      <a href="#features">Features</a>
+      <a href="#sponsors">Sponsors</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Trade smarter with <span>$kTRADE</span></h1>
+
+    <p>
+      Upload or paste a trading chart and get fast educational
+      chart analysis focused on trend, support, resistance and momentum.
+    </p>
+
+    <a class="button" href="#analyze">Analyze My Chart</a>
+  </section>
+
+  <section id="analyze">
+    <h2 class="section-title">Analyze Your Chart</h2>
+
+    <div class="upload-box">
+      <h2>📈 Upload Your Trading Chart</h2>
+
+      <p>
+        Select a PNG, JPG or WEBP screenshot of your trading chart.
+      </p>
+
+      <label class="upload-label" for="chartInput">
+        Choose Chart
+      </label>
+
+      <input
+        id="chartInput"
+        type="file"
+        accept="image/png,image/jpeg,image/webp"
+      >
+
+      <img id="preview" alt="Trading chart preview">
+
+      <div id="message"></div>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2 class="section-title">What $kTRADE Analyzes</h2>
+
+    <div class="features">
+
+      <div class="card">
+        <h3>📊 Trend</h3>
+        <p>
+          Identify potential bullish, bearish or sideways market structure.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🎯 Support & Resistance</h3>
+        <p>
+          Highlight important price areas traders may watch.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>⚡ Momentum</h3>
+        <p>
+          Examine the strength and direction of recent price movement.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="sponsors">
+    <h2 class="section-title">Sponsor $kTRADE</h2>
+
+    <div class="sponsors">
+
+      <div class="price-card">
+        <h3>Starter</h3>
+        <div class="price">$50/mo</div>
+        <p>Small sponsor banner placement.</p>
+      </div>
+
+      <div class="price-card featured">
+        <h3>Featured</h3>
+        <div class="price">$200/mo</div>
+        <p>Featured sponsor placement and promotion.</p>
+      </div>
+
+      <div class="price-card">
+        <h3>Premium</h3>
+        <div class="price">$500/mo</div>
+        <p>Premium branding and prominent placement.</p>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;">
+      <a
+        class="button"
+        href="mailto:khalidmuhiden03@gmail.com?subject=$kTRADE Sponsorship"
+      >
+        Become a Sponsor
+      </a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">Contact $kTRADE</h2>
+
+    <p>Interested in partnerships or sponsorship?</p>
+
+    <p>
+      Email:
+      <a href="mailto:khalidmuhiden03@gmail.com">
+        khalidmuhiden03@gmail.com
+      </a>
+    </p>
+  </section>
+
+  <footer>
+    © 2026 $kTRADE — Educational use only. Not financial advice.
+  </footer>
+
+  <script>
+    const input = document.getElementById("chartInput");
+    const preview = document.getElementById("preview");
+    const message = document.getElementById("message");
+
+    input.addEventListener("change", function () {
+
+      const file = this.files[0];
+
+      if (!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        preview.src = e.target.result;
+        preview.style.display = "block";
+
+        message.textContent =
+          "Chart uploaded successfully. AI analysis can be connected next.";
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+
+</body>
+</html>
