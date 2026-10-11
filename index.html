@@ -3,395 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>$kTRADE — AI Trading Chart Analyzer</title>
-  <meta name="description" content="$kTRADE is an AI-powered trading chart analysis tool for educational chart analysis.">
-
+  <meta name="description" content="$kTRADE offers basic and advanced educational trading chart analysis plans.">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #07111f;
-      color: white;
-      line-height: 1.6;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 7%;
-      background: #091522;
-      border-bottom: 1px solid #1d3045;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-      color: #36e0a0;
-    }
-
-    nav a {
-      color: #dbe7f3;
-      text-decoration: none;
-      margin-left: 25px;
-    }
-
-    nav a:hover {
-      color: #36e0a0;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 100px 20px 80px;
-      background: radial-gradient(circle at top, #12304a, #07111f 65%);
-    }
-
-    .hero h1 {
-      font-size: clamp(45px, 8vw, 80px);
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-      color: #36e0a0;
-    }
-
-    .hero p {
-      max-width: 700px;
-      margin: auto;
-      color: #b7c6d8;
-      font-size: 20px;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
-      border-radius: 10px;
-      background: #36e0a0;
-      color: #06121d;
-      font-weight: bold;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      font-size: 16px;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    section {
-      padding: 80px 7%;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 40px;
-      margin-bottom: 45px;
-    }
-
-    .upload-box {
-      max-width: 800px;
-      margin: auto;
-      padding: 45px;
-      border: 2px dashed #36e0a0;
-      border-radius: 20px;
-      background: #0c1b2b;
-      text-align: center;
-    }
-
-    .upload-box h2 {
-      margin-bottom: 15px;
-    }
-
-    .upload-box p {
-      color: #9eb0c4;
-      margin-bottom: 25px;
-    }
-
-    input[type="file"] {
-      display: none;
-    }
-
-    .upload-label {
-      display: inline-block;
-      padding: 14px 25px;
-      background: #36e0a0;
-      color: #06121d;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    #preview {
-      max-width: 100%;
-      max-height: 450px;
-      margin-top: 30px;
-      border-radius: 12px;
-      display: none;
-    }
-
-    #message {
-      margin-top: 20px;
-      color: #36e0a0;
-      font-weight: bold;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .card {
-      background: #0c1b2b;
-      border: 1px solid #1c334b;
-      padding: 30px;
-      border-radius: 16px;
-      text-align: center;
-    }
-
-    .card h3 {
-      color: #36e0a0;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      color: #aebdcd;
-    }
-
-    .sponsors {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 25px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .price-card {
-      background: #0c1b2b;
-      border: 1px solid #28445e;
-      border-radius: 16px;
-      padding: 30px;
-      text-align: center;
-    }
-
-    .price-card.featured {
-      border: 2px solid #36e0a0;
-    }
-
-    .price {
-      font-size: 35px;
-      font-weight: bold;
-      color: #36e0a0;
-      margin: 15px 0;
-    }
-
-    .contact {
-      text-align: center;
-      background: #091522;
-    }
-
-    .contact p {
-      color: #b7c6d8;
-      margin: 10px 0;
-    }
-
-    .contact a {
-      color: #36e0a0;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #7f91a5;
-      background: #050d16;
-      font-size: 14px;
-    }
-
-    @media (max-width: 700px) {
-      nav {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      nav a {
-        margin: 0 7px;
-      }
-
-      section {
-        padding: 60px 5%;
-      }
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Arial,sans-serif;background:#07111f;color:#fff;line-height:1.6}
+    nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 7%;background:#091522;border-bottom:1px solid #1d3045;position:sticky;top:0;z-index:10}
+    .logo{font-size:28px;font-weight:bold;color:#36e0a0}
+    nav a{color:#dbe7f3;text-decoration:none;margin-left:18px}
+    nav a:hover{color:#36e0a0}
+    .hero{text-align:center;padding:100px 20px 80px;background:radial-gradient(circle at top,#12304a,#07111f 65%)}
+    .hero h1{font-size:clamp(42px,8vw,76px);line-height:1.15;margin-bottom:20px}
+    .hero h1 span{color:#36e0a0}
+    .hero p{max-width:720px;margin:auto;color:#b7c6d8;font-size:19px}
+    .button{display:inline-block;margin-top:25px;padding:14px 25px;border-radius:10px;background:#36e0a0;color:#06121d;font-weight:bold;text-decoration:none;border:0;cursor:pointer}
+    section{padding:75px 7%}
+    .section-title{text-align:center;font-size:clamp(30px,5vw,40px);margin-bottom:38px}
+    .muted{color:#aebdcd}
+    .upload-box{max-width:800px;margin:auto;padding:35px;border:2px dashed #36e0a0;border-radius:20px;background:#0c1b2b;text-align:center}
+    .upload-box h3{margin-bottom:10px}.upload-box p{color:#9eb0c4;margin-bottom:20px}
+    input[type=file]{display:none}
+    .upload-label{display:inline-block;padding:13px 23px;background:#36e0a0;color:#06121d;border-radius:10px;cursor:pointer;font-weight:bold}
+    #preview{max-width:100%;max-height:400px;margin-top:25px;border-radius:12px;display:none}
+    #message{margin-top:16px;color:#36e0a0;font-weight:bold}
+    .plans,.features,.sponsors{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:22px;max-width:1100px;margin:auto}
+    .card,.price-card{background:#0c1b2b;border:1px solid #28445e;border-radius:18px;padding:28px}
+    .card h3,.price-card h3{color:#36e0a0;margin-bottom:10px}
+    .price-card{position:relative}
+    .price-card.featured{border:2px solid #36e0a0;box-shadow:0 0 25px #36e0a01a}
+    .plan-label{display:inline-block;color:#07111f;background:#36e0a0;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:bold;margin-bottom:12px}
+    .price{font-size:clamp(30px,4vw,38px);font-weight:bold;color:#36e0a0;margin:12px 0}
+    .price small{font-size:14px;color:#aebdcd;font-weight:normal}
+    ul{padding-left:20px;color:#c5d2df;margin-top:15px}
+    li{margin:8px 0}
+    .plan-note{max-width:820px;text-align:center;margin:28px auto 0;color:#9eb0c4;font-size:14px}
+    .contact{text-align:center;background:#091522}.contact p{color:#b7c6d8;margin:10px 0}.contact a{color:#36e0a0}
+    footer{text-align:center;padding:28px;color:#7f91a5;background:#050d16;font-size:14px}
+    @media(max-width:650px){nav{justify-content:center}nav a{margin:0 7px}.hero{padding-top:75px}section{padding:55px 5%}.upload-box{padding:25px 18px}}
   </style>
 </head>
-
 <body>
-
   <nav>
     <div class="logo">$kTRADE</div>
-
-    <div>
-      <a href="#analyze">Analyze</a>
-      <a href="#features">Features</a>
-      <a href="#sponsors">Sponsors</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <div><a href="#analyze">Analyze</a><a href="#pricing">Plans</a><a href="#features">Features</a><a href="#sponsors">Sponsors</a><a href="#contact">Contact</a></div>
   </nav>
 
-  <section class="hero">
-    <h1>Trade smarter with <span>$kTRADE</span></h1>
+  <header class="hero">
+    <h1>See the chart.<br>Understand the market.<br><span>Trade smarter.</span></h1>
+    <p>$kTRADE is designed to help traders explore chart trends, key price areas and momentum with clear, educational reports.</p>
+    <a class="button" href="#pricing">Explore Analyzer Plans</a>
+  </header>
 
-    <p>
-      Upload or paste a trading chart and get fast educational
-      chart analysis focused on trend, support, resistance and momentum.
-    </p>
-
-    <a class="button" href="#analyze">Analyze My Chart</a>
+  <section id="pricing">
+    <h2 class="section-title">Choose Your Analyzer</h2>
+    <div class="plans">
+      <article class="price-card">
+        <span class="plan-label">TRY IT</span>
+        <h3>Free Analyzer</h3>
+        <div class="price">$0 <small>/ forever</small></div>
+        <p class="muted">A simple starting point for new users.</p>
+        <ul>
+          <li>Limited chart analyses</li>
+          <li>Basic trend overview</li>
+          <li>Simple bullish/bearish observations</li>
+          <li>Short summary, fewer details</li>
+        </ul>
+        <a class="button" href="#analyze">Try Free</a>
+      </article>
+      <article class="price-card featured">
+        <span class="plan-label">STANDARD</span>
+        <h3>Standard Analyzer</h3>
+        <div class="price">$29.99 <small>/ month</small></div>
+        <p class="muted">A deeper, more structured chart report.</p>
+        <ul>
+          <li>Higher analysis allowance</li>
+          <li>Trend and momentum breakdown</li>
+          <li>Support and resistance observations</li>
+          <li>Candlestick-pattern observations</li>
+          <li>Detailed written report</li>
+        </ul>
+        <a class="button" href="mailto:khalidmuhiden03@gmail.com?subject=%24kTRADE%20Standard%20Plan">Ask About Standard</a>
+      </article>
+      <article class="price-card">
+        <span class="plan-label">ADVANCED</span>
+        <h3>Pro Analyzer</h3>
+        <div class="price">$50 <small>/ month</small></div>
+        <p class="muted">For users who want a more comprehensive breakdown.</p>
+        <ul>
+          <li>Higher analysis allowance</li>
+          <li>More detailed chart observations</li>
+          <li>Multi-timeframe comparison (when data is available)</li>
+          <li>Technical-indicator insights (when data is available)</li>
+          <li>Scenario planning and saved reports (planned)</li>
+        </ul>
+        <a class="button" href="mailto:khalidmuhiden03@gmail.com?subject=%24kTRADE%20Pro%20Plan">Ask About Pro</a>
+      </article>
+    </div>
+    <p class="plan-note">Pricing shown in USD. Paid plans are not active yet; the contact links only express interest and do not take payment. Features marked planned need to be built before they are offered.</p>
   </section>
 
   <section id="analyze">
-    <h2 class="section-title">Analyze Your Chart</h2>
-
+    <h2 class="section-title">Try a Chart Upload</h2>
     <div class="upload-box">
-      <h2>📈 Upload Your Trading Chart</h2>
-
-      <p>
-        Select a PNG, JPG or WEBP screenshot of your trading chart.
-      </p>
-
-      <label class="upload-label" for="chartInput">
-        Choose Chart
-      </label>
-
-      <input
-        id="chartInput"
-        type="file"
-        accept="image/png,image/jpeg,image/webp"
-      >
-
-      <img id="preview" alt="Trading chart preview">
-
-      <div id="message"></div>
+      <h3>📈 Upload a Trading Chart</h3>
+      <p>Select a PNG, JPG or WEBP screenshot to preview it on this page.</p>
+      <label class="upload-label" for="chartInput">Choose Chart</label>
+      <input id="chartInput" type="file" accept="image/png,image/jpeg,image/webp">
+      <br><img id="preview" alt="Trading chart preview">
+      <div id="message" role="status"></div>
     </div>
+    <p class="plan-note">This upload currently previews your image only. AI analysis and account-based plan limits are not connected yet.</p>
   </section>
 
   <section id="features">
-    <h2 class="section-title">What $kTRADE Analyzes</h2>
-
+    <h2 class="section-title">What $kTRADE Aims to Explain</h2>
     <div class="features">
-
-      <div class="card">
-        <h3>📊 Trend</h3>
-        <p>
-          Identify potential bullish, bearish or sideways market structure.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>🎯 Support & Resistance</h3>
-        <p>
-          Highlight important price areas traders may watch.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>⚡ Momentum</h3>
-        <p>
-          Examine the strength and direction of recent price movement.
-        </p>
-      </div>
-
+      <div class="card"><h3>📊 Trend</h3><p class="muted">Explore potential bullish, bearish or sideways market structure.</p></div>
+      <div class="card"><h3>🎯 Support & Resistance</h3><p class="muted">Review price areas traders may watch.</p></div>
+      <div class="card"><h3>⚡ Momentum</h3><p class="muted">Understand the strength and direction of price movement.</p></div>
     </div>
   </section>
 
   <section id="sponsors">
     <h2 class="section-title">Sponsor $kTRADE</h2>
-
     <div class="sponsors">
-
-      <div class="price-card">
-        <h3>Starter</h3>
-        <div class="price">$50/mo</div>
-        <p>Small sponsor banner placement.</p>
-      </div>
-
-      <div class="price-card featured">
-        <h3>Featured</h3>
-        <div class="price">$200/mo</div>
-        <p>Featured sponsor placement and promotion.</p>
-      </div>
-
-      <div class="price-card">
-        <h3>Premium</h3>
-        <div class="price">$500/mo</div>
-        <p>Premium branding and prominent placement.</p>
-      </div>
-
+      <div class="price-card"><h3>Starter</h3><div class="price">$50<small>/mo</small></div><p class="muted">Small sponsor banner placement.</p></div>
+      <div class="price-card featured"><h3>Featured</h3><div class="price">$200<small>/mo</small></div><p class="muted">Featured sponsor placement and promotion.</p></div>
+      <div class="price-card"><h3>Premium</h3><div class="price">$500<small>/mo</small></div><p class="muted">Premium branding and prominent placement.</p></div>
     </div>
-
-    <div style="text-align:center;">
-      <a
-        class="button"
-        href="mailto:khalidmuhiden03@gmail.com?subject=$kTRADE Sponsorship"
-      >
-        Become a Sponsor
-      </a>
-    </div>
+    <div style="text-align:center"><a class="button" href="mailto:khalidmuhiden03@gmail.com?subject=%24kTRADE%20Sponsorship">Become a Sponsor</a></div>
   </section>
 
   <section id="contact" class="contact">
     <h2 class="section-title">Contact $kTRADE</h2>
-
-    <p>Interested in partnerships or sponsorship?</p>
-
-    <p>
-      Email:
-      <a href="mailto:khalidmuhiden03@gmail.com">
-        khalidmuhiden03@gmail.com
-      </a>
-    </p>
+    <p>Questions about plans, partnerships or sponsorship?</p>
+    <p>Email: <a href="mailto:khalidmuhiden03@gmail.com">khalidmuhiden03@gmail.com</a></p>
   </section>
-
-  <footer>
-    © 2026 $kTRADE — Educational use only. Not financial advice.
-  </footer>
+  <footer>© 2026 $kTRADE — Educational use only. Not financial advice. Chart observations can be wrong; no profit is guaranteed.</footer>
 
   <script>
     const input = document.getElementById("chartInput");
     const preview = document.getElementById("preview");
     const message = document.getElementById("message");
-
     input.addEventListener("change", function () {
-
-      const file = this.files[0];
-
+      const file = this.files && this.files[0];
       if (!file) return;
-
+      if (!["image/png", "image/jpeg", "image/webp"].includes(file.type)) {
+        message.textContent = "Please choose a PNG, JPG or WEBP image.";
+        return;
+      }
       const reader = new FileReader();
-
-      reader.onload = function(e) {
+      reader.onload = function (e) {
         preview.src = e.target.result;
         preview.style.display = "block";
-
-        message.textContent =
-          "Chart uploaded successfully. AI analysis can be connected next.";
+        message.textContent = "Chart preview loaded. AI analysis is not connected yet.";
       };
-
       reader.readAsDataURL(file);
     });
   </script>
-
 </body>
 </html>
